@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import Datapage from './datapage';
+import Landing from './landing';
+import Lazyloader from './lazyloader';
+import Login from './login';
+import Navbar from './navbar';
+import Register from './register';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return ( 
+        <Router>
+            <Routes>
+                <Route path="/" exact element={<><Navbar/><Landing/></>} />
+    
+                <Route path="/login" exact element={<><Navbar/><Login /></>} />
+                <Route path="/register" element={<>< Navbar/><Register /></>}/>
+                <Route path="/purchase" element={<><Navbar /><Datapage /></>} />
+                <Route path="/loading" element={<><Navbar /><Lazyloader /></>} />
+            </Routes>
+        </Router>
+     );
 }
 
 export default App;
